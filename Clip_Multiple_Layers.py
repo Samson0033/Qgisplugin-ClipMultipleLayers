@@ -28,7 +28,7 @@ import resources_rc
 from Clip_Multiple_Layers_dialog import ClipMultipleLayersDialog
 import os.path
 
-
+from PyQt4.QtGui import QMessageBox
 import processing, os, subprocess
 from qgis.utils import *
 from qgis.core import *
@@ -188,18 +188,19 @@ class ClipMultipleLayers:
         """Run method that performs all the real work"""
         # show the dialog
         self.dlg.show()
+        
+        layers = QgsMapLayerRegistry.instance().mapLayers().values()
+        for layer in layers:
+            if layer.type() == QgsMapLayer.VectorLayer and layer.wkbType() == QGis.WKBPolygon :
+                self.dlg.comboBox.addItem( layer.name(), layer ) 
+        
         # Run the dialog event loop
         result = self.dlg.exec_()
         # See if OK was pressed
         if result:
             
-            
-            # create a class to return custom error
-            class Error(Exception):
-                def __init__(self, value):
-                    self.value = value
-                def __str__(self):
-                    return repr(self.value)
+            index = self.dlg.comboBox.currentIndex()
+            selection = self.dlg.comboBox.itemData(index)
             
             
             legend = iface.legendInterface()
@@ -219,15 +220,6 @@ class ClipMultipleLayers:
                 os.makedirs(directory)
             
             
-            #search the layer selection
-            trouvee = 0
-            for layer in layers :
-                if layer.type() == QgsMapLayer.VectorLayer and layer.name() == "selection" :
-                    selection = layer
-                    trouvee = 1
-
-                if trouvee == 0 :
-                    raise Error ("Layer selection not found ! or the layer isn't a vector layer")
             
             
             #clip part
