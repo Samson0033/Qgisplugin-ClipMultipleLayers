@@ -13,9 +13,9 @@ name=Clip Multiple Layers
 
 qgisMinimumVersion=2.0
 
-description=Clip all displayed layers (rasters and vectors) with a layer named selection for model
+description=Clip all displayed layers (rasters and vectors) with a polygon layer selected
 
-version=0.1
+version=0.1.1
 
 author=Pg
 
@@ -31,7 +31,7 @@ email=pg.developper.fr@gmail.com
 # Recommended items:
 
 # Uncomment the following line and add your changelog:
-#changelog=
+changelog=improve the interface, know you can chose any polygon layer without rename it selection
 
 
 # Tags are comma separated with spaces allowed
