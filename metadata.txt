@@ -31,7 +31,7 @@ email=pg.developper.fr@gmail.com
 # Recommended items:
 
 # Uncomment the following line and add your changelog:
-changelog=improve the interface, now you can chose any polygon layer without rename it selection
+changelog=improve the interface, now you can choose any polygon layer without rename it selection
 
 
 # Tags are comma separated with spaces allowed
