@@ -11,11 +11,11 @@
 
 name=Clip Multiple Layers
 
-qgisMinimumVersion=2.0
+qgisMinimumVersion=2.10
 
-description=Clip all displayed layers (rasters and vectors) with a polygon layer selected
+description=Clip all displayed layers (rasters and vectors) with a polygon layer selected for Qgis 2.11-2 or high.
 
-version=0.1.1
+version=0.1.2
 
 author=Pg
 
