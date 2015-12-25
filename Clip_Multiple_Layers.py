@@ -227,7 +227,7 @@ class ClipMultipleLayers:
                 #clip vector layer (if displayed)
                 if layer.type() == QgsMapLayer.VectorLayer and layer != selection and legend.isLayerVisible(layer) == True :
                     output = path_project + "/output/vectors/clip_" + layer.name() + ".shp"
-                    processing.runalg("qgis:clip",layer,selection,output)
+                    processing.runalg("qgis:intersection",layer,selection,output)
                 
                 #clip raster layer (if displayed)
                 if layer.type() == QgsMapLayer.RasterLayer and legend.isLayerVisible(layer) == True :
